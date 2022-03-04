@@ -15,7 +15,7 @@ function App() {
             <div className='col-sm-7 mid-bar'>
                 <MidNavBar />
             </div>
-            <div className='col-sm-9 left-bar'>
+            <div className='col-sm-6 left-bar'>
               <LeftNavBar/>
             </div>
             <div className='col-sm-2 offset-md-4 right-bar'>
