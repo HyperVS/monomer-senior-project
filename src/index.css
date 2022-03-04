@@ -38,10 +38,21 @@ code {
 
 .left-sidebar {
   font-size: 19px;
-  /* font-weight: bold; */
   color:black !important;
   position: relative;
-  left: 10px;
+  right: 140px;
+  bottom: 85px;
+}
+
+.mid-sidebar {
+  position: relative;
+  left: 240px;
+}
+
+.right-sidebar {
+  position: relative;
+  bottom: 85px;
+  left: 50px;
 }
 
 .live-stream-btn {
@@ -107,12 +118,12 @@ code {
 
 .left-bar {
   position: relative;
-  right: 150px;
+  /* right: 720px; */
 }
 
 .right-bar {
   position: relative;
-  right: 50px;
+  /* right: 50px; */
 }
 
 .bar-container {
@@ -181,4 +192,10 @@ code {
   top: 25px;
   left: 23px;
   font-size: 20px;
+}
+
+.new_dataset_btn {
+  position: relative;
+  top: 23px;
+  text-transform: uppercase;
 }

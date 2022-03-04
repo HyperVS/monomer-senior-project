@@ -11,8 +11,8 @@ import admin_icon from './images/admin.png';
 class LeftNavBar extends Component {
   render() {
     return (
-      <div>
-           <Nav className="d-none d-md-block bg-light left-sidebar">
+      <div className='left-sidebar'>
+           <Nav className="d-none d-md-block bg-light">
             <div className='live-stream-style'>
              <button type="button" class="btn btn-primary" className='live-stream-btn'><img src={video_icon}
                alt='video icon' className='video-style'/>Live Stream</button>

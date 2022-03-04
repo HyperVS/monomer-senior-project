@@ -6,8 +6,8 @@ import { MDBCheckbox } from 'mdb-react-ui-kit';
 class RightNavBar extends Component {
   render() {
     return (
-      <div>
-        <Nav className="d-none d-md-block bg-light right-sidebar">
+      <div className='right-sidebar'>
+        <Nav className="d-none d-md-block bg-light">
 
             <div className='bar-container'>
 
