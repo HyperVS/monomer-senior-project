@@ -11,3 +11,174 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title-bar {
+  background-color: #353433;
+  height: 65px;
+  position: sticky;
+}
+
+.canopy-style {
+  color: #7fb96d;
+  font-size: 50px;
+  font-weight: bold;
+  position: relative;
+  left: 50px;
+  bottom: 5px;
+}
+
+.AI-style {
+  color: #5f704e;
+  font-size: 35px;
+  font-weight: bold;
+  position: relative;
+  right: 470px;
+  top: 8px;
+}
+
+.left-sidebar {
+  font-size: 19px;
+  /* font-weight: bold; */
+  color:black !important;
+  position: relative;
+  left: 10px;
+}
+
+.live-stream-btn {
+  background-color: #5f704e;
+  width: 220px;
+}
+
+.video-browser-btn {
+  background-color: #5f704e;
+  width: 220px;
+  position: relative;
+  left: 18px;
+}
+
+.image-annotation-btn {
+  background-color: #5f704e;
+  width: 220px;
+  position: relative;
+  left: 6px;
+}
+
+.model-output-btn {
+  background-color: #5f704e;
+  width: 220px;
+}
+
+.admin-btn {
+  background-color: #5f704e;
+  width: 220px;
+  position: relative;
+  left: 50px;
+}
+
+.video-style {
+  width: 30px;
+  position: relative;
+  right: 27px;
+}
+
+.video-browser-style {
+  width: 30px;
+  position: relative;
+  right: 18px;
+}
+
+.image-annotation-style {
+  width: 30px;
+  position: relative;
+  right: 6px;
+}
+
+.model_output_style {
+  width: 30px;
+  position: relative;
+  right: 20px;
+}
+
+.admin-style {
+  width: 30px;
+  position: relative;
+  right: 50px;
+}
+
+.left-bar {
+  position: relative;
+  right: 150px;
+}
+
+.right-bar {
+  position: relative;
+  right: 50px;
+}
+
+.bar-container {
+  background-color: #5f704e;
+  width: 350px;
+  height: 700px;
+  font-weight: bold;
+}
+
+.data-sets-field {
+  background-color: azure;
+  width: 300px;
+  height: 100px;
+  position: relative;
+  top: 10px;
+  left: 25px;
+}
+
+.title-dataset_stats {
+  position: relative;
+  top: 18px;
+  left: 23px;
+  font-size: 20px;
+}
+
+.class-labels-field {
+  background-color: azure;
+  width: 300px;
+  position: relative;
+  top: 20px;
+  left: 25px;
+}
+
+.title-class_labels {
+  position: relative;
+  top: 25px;
+  left: 23px;
+  font-size: 20px;
+}
+
+.options-field {
+  background-color: azure;
+  width: 300px;
+  position: relative;
+  top: 20px;
+  left: 25px;
+}
+
+.title-options {
+  position: relative;
+  top: 25px;
+  left: 23px;
+  font-size: 20px;
+}
+
+.shortcuts-field {
+  background-color: azure;
+  width: 300px;
+  position: relative;
+  top: 20px;
+  left: 25px;
+}
+
+.title-shortcuts {
+  position: relative;
+  top: 25px;
+  left: 23px;
+  font-size: 20px;
+}
