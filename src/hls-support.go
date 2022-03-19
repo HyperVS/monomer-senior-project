@@ -10,6 +10,7 @@ import (
 
 func main() {
 	//get information from hls vid
+	//
 	//directory
 	//port
 	const port = 8080
