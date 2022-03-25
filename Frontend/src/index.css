@@ -41,7 +41,7 @@ code {
   color:black !important;
   position: relative;
   right: 140px;
-  bottom: 520px;
+  bottom: 610px;
 }
 
 .mid-sidebar {
@@ -52,7 +52,7 @@ code {
 
 .right-sidebar {
   position: relative;
-  bottom: 520px;
+  bottom: 610px;
   left: 50px;
 }
 
@@ -204,5 +204,5 @@ code {
 .player {
   position: relative;
   right: 140px;
-  top: 40px;
+  top: 43px;
 }

@@ -19,7 +19,7 @@ export default function MidNavBar(){
           </Form.Group>
         </div>
         <div className='player'>
-          <ReactPlayer width={'800px'} height={'500px'} loop={true} url={"https://www.youtube.com/watch?v=9SyVuPxkuxA"}/>  
+          <ReactPlayer width={'830px'} height={'540px'} loop={true} url={"https://www.youtube.com/watch?v=9SyVuPxkuxA"}/>  
         </div>
     </div>
   )
