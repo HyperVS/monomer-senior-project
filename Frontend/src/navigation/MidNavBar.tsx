@@ -18,7 +18,9 @@ export default function MidNavBar(){
             <Button className='new_dataset_btn'>Create New Dataset</Button>  
           </Form.Group>
         </div>
-      <ReactPlayer url={"https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"}/>
+        <div className='player'>
+          <ReactPlayer width={'800px'} height={'500px'} loop={true} url={"https://www.youtube.com/watch?v=9SyVuPxkuxA"}/>  
+        </div>
     </div>
   )
 }

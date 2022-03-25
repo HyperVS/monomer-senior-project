@@ -41,17 +41,18 @@ code {
   color:black !important;
   position: relative;
   right: 140px;
-  bottom: 85px;
+  bottom: 520px;
 }
 
 .mid-sidebar {
+
   position: relative;
   left: 240px;
 }
 
 .right-sidebar {
   position: relative;
-  bottom: 85px;
+  bottom: 520px;
   left: 50px;
 }
 
@@ -198,4 +199,10 @@ code {
   position: relative;
   top: 23px;
   text-transform: uppercase;
+}
+
+.player {
+  position: relative;
+  right: 140px;
+  top: 40px;
 }
