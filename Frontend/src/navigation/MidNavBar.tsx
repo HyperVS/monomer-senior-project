@@ -1,4 +1,6 @@
-import { Form, Button, Col, Container, ToggleButton } from 'react-bootstrap'
+import { Form, Button, Col, Container, ToggleButton } from 'react-bootstrap';
+import ReactPlayer from 'react-player';
+
 
 export default function MidNavBar(){
   return (
@@ -16,6 +18,7 @@ export default function MidNavBar(){
             <Button className='new_dataset_btn'>Create New Dataset</Button>  
           </Form.Group>
         </div>
+      <ReactPlayer url={"https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"}/>
     </div>
   )
 }
