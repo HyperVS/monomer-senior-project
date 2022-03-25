@@ -140,6 +140,7 @@ code {
   position: relative;
   top: 10px;
   left: 25px;
+  border-radius: 2%;
 }
 
 .title-dataset_stats {
@@ -155,6 +156,7 @@ code {
   position: relative;
   top: 20px;
   left: 25px;
+  border-radius: 2%;
 }
 
 .title-class_labels {
@@ -170,6 +172,7 @@ code {
   position: relative;
   top: 20px;
   left: 25px;
+  border-radius: 2%;
 }
 
 .title-options {
@@ -185,6 +188,7 @@ code {
   position: relative;
   top: 20px;
   left: 25px;
+  border-radius: 2%;
 }
 
 .title-shortcuts {
@@ -205,3 +209,4 @@ code {
   right: 147px;
   top: 43px;
 }
+
