@@ -8,7 +8,8 @@ export default function MidNavBar(){
         <div className='form-group'>
           <Form.Group controlId='dataset-selection' className='col-sm-6'>
             <Form.Label>Select Dataset</Form.Label>
-            <Form.Control as='select' name='dataset-select' defaultValue={'Hard Hats (object detection)'} style={{width: '300px'}}>
+            <Form.Control as='select' name='dataset-select' defaultValue={'Hard Hats (object detection)'} style={{width: '300px'}} 
+              className='dataset-style'>
               <option value={'hard_hats'}>Hard Hats (object detection)</option>  
               <option value={'truck'}>Trucks (object detection)</option>  
               <option value={'worker'}>Worker (object detection)</option>  

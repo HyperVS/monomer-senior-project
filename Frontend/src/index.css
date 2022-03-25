@@ -41,18 +41,17 @@ code {
   color:black !important;
   position: relative;
   right: 140px;
-  bottom: 610px;
+  bottom: 567px;
 }
 
 .mid-sidebar {
-
   position: relative;
   left: 240px;
 }
 
 .right-sidebar {
   position: relative;
-  bottom: 610px;
+  bottom: 567px;
   left: 50px;
 }
 
@@ -203,6 +202,6 @@ code {
 
 .player {
   position: relative;
-  right: 140px;
+  right: 147px;
   top: 43px;
 }
