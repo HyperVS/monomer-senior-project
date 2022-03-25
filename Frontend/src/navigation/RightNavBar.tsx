@@ -1,7 +1,6 @@
 import { Nav } from "react-bootstrap";
 import { MDBCheckbox } from 'mdb-react-ui-kit';
 
-
 export default function RightNavBar(){
   return (
     <div className='right-sidebar'>
@@ -16,9 +15,9 @@ export default function RightNavBar(){
 
               <p className='title-class_labels'>Class Labels</p>
               <div className='class-labels-field'>
-                  <MDBCheckbox name='hard_hat' value='' id='hard_hat_check' label='hard_hat' defaultChecked/>
-                  <MDBCheckbox name='truck' value='' id='truck_check' label='truck' defaultChecked />
-                  <MDBCheckbox name='worker' value='' id='worker_check' label='worker' defaultChecked />    
+                  <MDBCheckbox name='hard_hat' value='' id='hard_hat_check' label='hard_hat'/>
+                  <MDBCheckbox name='truck' value='' id='truck_check' label='truck'/>
+                  <MDBCheckbox name='worker' value='' id='worker_check' label='worker' />    
               </div>
 
               <p className='title-options'>Options</p>
@@ -26,13 +25,13 @@ export default function RightNavBar(){
                   <div className='row'>
                       <div className='col-md-6'>
                           <p>Detect Objects:</p>
-                              <MDBCheckbox name='inside_region' value='' id='inside_region_check' label='Inside region' defaultChecked/>
-                              <MDBCheckbox name='outside_region' value='' id='outside_region_check' label='Outside region' defaultChecked />
+                              <MDBCheckbox name='inside_region' value='' id='inside_region_check' label='Inside region'/>
+                              <MDBCheckbox name='outside_region' value='' id='outside_region_check' label='Outside region'/>
                       </div>
                       <div className='col-md-6'>
                           <p>Send Alerts:</p>
-                              <MDBCheckbox name='alert_yes' value='' id='alert_yes_check' label='Yes' defaultChecked/>
-                              <MDBCheckbox name='alert_no' value='' id='alert_no_check' label='No' defaultChecked />
+                              <MDBCheckbox name='alert_yes' value='' id='alert_yes_check' label='Yes'/>
+                              <MDBCheckbox name='alert_no' value='' id='alert_no_check' label='No'/>
                       </div>
                   </div> 
               </div>

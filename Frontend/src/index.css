@@ -208,5 +208,13 @@ code {
   position: relative;
   right: 147px;
   top: 43px;
+  pointer-events: none;
+}
+
+.canvas {
+  position: absolute;
+  z-index: 10;
+  top: 43px;
+  right: 147px;
 }
 
