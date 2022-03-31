@@ -20,7 +20,7 @@ import (
 const (
 	USER = "monomer"
 	PASSWORD = "software"
-	NAME = "roi"
+	NAME = "detections"
 )
 
 //details the detected box size: top and left make up the top left point of the box.
