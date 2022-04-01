@@ -31,10 +31,20 @@ type Roi struct{
 	Height float64 'json:"height"'
 }
 
+//details a struct of checkboxes checked from the front end
+//If sending alerts is checked, then Alert will be true, else it will be false.
+//If the detection is for detection outside the ROI, then Location will return false, else it will
+//return true
+type Checked struct{
+	Alert bool 'json:alert'
+	Location bool 'json:location'
+}
+
 //details json response
 type Response struct{
 	Type string 'json:"type"'
 	Data Roi 'json:"data"'
+	Data Checked 'json:"data"'
 	Message string 'json:"message"'
 }
 
@@ -99,7 +109,27 @@ func getRoi(write http.ResponseWriter, read *http.Request){
 	json.NewEncoder(write).Endcode(respond)
 }
 
+//gets the Location information and Alert infromation from the frontend
+func GetFrontend(write http.ResponseWriter, read *http.Request){
+	//query information from front end
 
+	//variable to store frontend variables
+	var front Checked
+
+	//alert and locatoin variables
+	var location bool
+	var alert bool
+
+	//sve alert and location to front struct
+	front.Location = location
+	front.Alert = alert
+
+	//json response
+	var respond = Response{Type: "Checked", Data: location}
+
+	json.NewEncoder(write).Endcode(respond)
+
+}
 
 func main(){
 	
@@ -109,6 +139,8 @@ func main(){
 	//get roi
 	router.HandleFunc("/roi/", GetRoi).Methods("GET")
 
+	//get location and alert status from front end
+	router.HandleFunc("/Frontend/", GetFrontend).Methods("GET")
 	//create a detection
 	//router.HandleFunc("/roi/", CreateDetections).Methods("POST")
 
