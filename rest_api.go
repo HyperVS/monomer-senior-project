@@ -24,7 +24,7 @@ const (
 )
 
 //details the detected box size: top and left make up the top left point of the box.
-type Detection struct{
+type Roi struct{
 	Top float64 'json:"top"'
 	Left float64 'json:"left"'
 	Width float64 'json:"width"'
@@ -34,7 +34,7 @@ type Detection struct{
 //details json response
 type Response struct{
 	Type string 'json:"type"'
-	Data []Detection 'json:"data"'
+	Data Roi 'json:"data"'
 	Message string 'json:"message"'
 }
 
@@ -69,40 +69,32 @@ func errorCheck(er error){
 
 
 //function to get the detected hazards from the database
-func getDetections(write http.ResponseWriter, read *http.Request){
+func getRoi(write http.ResponseWriter, read *http.Request){
 	
 	//get database
 	database := setup()
 
-	//get all detected hazards from table
-	row, err := database.Query("SELECT * FROM detection")
+	//get roi from db
+	row, err := database.Query("SELECT * FROM roi")
 
 	//check for any errors
 	errorCheck(err)
 
-	//array of detections
-	var detections []Detection
+	//region variable that stores the region of interest
+	var region Roi
 
-	//parse through each detected hazard
-	for row.Next(){
-		var id int
-		var top float64
-		var left float64
-		var width float64
-		var height float64
+	//vars to store information about the roi
+	var top float64
+	var left float64
+	var width float64
+	var height float64
 
-		err := row.Scan(&id, &top, &left, &width, &height)
-		//check for errors
-		errorCheck(err)
-
-		//add to detections array
-		//MAY NEED TO CHANGE DEPENDING ON HOW DB IS SET UP
-		detections = append(detections, Detection{Id: id, Top: top, Left: left, Width: width, Height: height})
-
-	}
+	//store data into region variable
+	region := Roi{Top: top, Left: left, Width: width, Height: height}
+		
 
 	//JSON response
-	var respond = Response{Type: "detected", Data: detections}
+	var respond = Response{Type: "ROI", Data: region}
 
 	json.NewEncoder(write).Endcode(respond)
 }
@@ -115,7 +107,7 @@ func main(){
 	router := mux.NewRouter()
 
 	//get roi
-	router.HandleFunc("/roi/", GetDetections).Methods("GET")
+	router.HandleFunc("/roi/", GetRoi).Methods("GET")
 
 	//create a detection
 	//router.HandleFunc("/roi/", CreateDetections).Methods("POST")
