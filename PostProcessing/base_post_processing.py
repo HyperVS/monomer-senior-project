@@ -5,8 +5,6 @@ import json
 from datetime import datetime
 import uuid
 from twilio.rest import Client
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
 
 uuid_str = str(uuid.uuid4())[:4]
 print(f"{uuid_str}: starting script at {datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}")
