@@ -17,7 +17,7 @@ type Dbinstance struct {
 var DB Dbinstance
 
 func ConnectDb() {
-	dsn := "host=localhost user=postgres password='senior' dbname=roi port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	dsn := "host=localhost user=postgres password='Password' dbname=roi port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
