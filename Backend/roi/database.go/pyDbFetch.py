@@ -11,7 +11,7 @@ connection.autocommit = True
 cursor = connection.cursor()
 
 #get data. Format: top:yy, left:xx, height:hh, width:ww, location:"insideOrOutside"
-cursor.execute('''SELECT * FROM ID''')
+cursor.execute('''SELECT * FROM "models" WHERE ID = '1'"''')
 
 #fetch data
 data = cursor.fetchall()
