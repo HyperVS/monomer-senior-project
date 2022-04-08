@@ -1,14 +1,42 @@
 #!/usr/bin/env python3
 
 import os
+import psycopg2
 import json
 from datetime import datetime
 import uuid
 from twilio.rest import Client
 
+#connect to the postgres database
+def dBConnect():
+    #connect to database
+    #password will change based on what password you chose to set up server and db
+    connection = psycopg2.connect("dbname=roi user=postgres password=Password host=127.0.0.1 port=5432")
+
+    connection.autocommit = True
+
+    #create cursor object
+    cursor = connection.cursor()
+
+    #get data. Format: top:yy, left:xx, height:hh, width:ww, location:"insideOrOutside"
+    cursor.execute('SELECT * FROM "models" WHERE ID = 4')
+
+    #fetch data
+    data = cursor.fetchall()
+
+    #commit changes
+    connection.commit()
+
+    #close connection
+    connection.close()
+
+    return data
+
 uuid_str = str(uuid.uuid4())[:4]
 print(f"{uuid_str}: starting script at {datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}")
 
+data = dBConnect()
+print(data)
 ## retrieve ROI coordinates from database (using testfile for now)
 with open('roi.json') as f:
     roi = json.load(f)
@@ -58,6 +86,8 @@ def send_alert(alert_message):
         to="+17273705915", 
         from_="+14342859160",
         body=alert_message)
+
+
 
 ## loop for pulling json objects from ML model
 #while True:
