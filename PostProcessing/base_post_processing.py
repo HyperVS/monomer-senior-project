@@ -83,7 +83,7 @@ def send_alert(alert_message):
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-        to="+17273705915", 
+        to="+17273015814", 
         from_="+19409783430",
         body=alert_message)
 
