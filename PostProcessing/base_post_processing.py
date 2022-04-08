@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-
+#data.json details the data from the ml model, roi.json details the
+#information retrieved about the roi from 
 import os
 import psycopg2
 import json
@@ -22,30 +23,45 @@ def dBConnect():
     cursor.execute('SELECT * FROM "models" WHERE ID = 4')
 
     #fetch data
-    data = cursor.fetchall()
+    roi = cursor.fetchall()
 
+    #insert
+    insert = []
+    column = [column[0] for column in cursor.description]
+
+    for i in roi:
+        insert.append(dict(zip(column, i)))
     #commit changes
     connection.commit()
 
     #close connection
     connection.close()
 
-    return data
+    return insert
+
+#convert data to json and save to file
+def convertToJson(data):
+    with open('roi.json', 'w') as f:
+        json.dump(data, f)
 
 uuid_str = str(uuid.uuid4())[:4]
 print(f"{uuid_str}: starting script at {datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}")
 
-data = dBConnect()
-print(data)
-## retrieve ROI coordinates from database (using testfile for now)
+roi = dBConnect()
+print(roi)
+convertToJson(roi)
+
+# retrieve ROI coordinates and region
 with open('roi.json') as f:
     roi = json.load(f)
     roi = roi['data'][0]
+
+    ## retrieve inside/outside region selection from database
+    region_sel = roi['timestamp']#CHANGE TO LOCATION
 f.close()
 
-## retrieve inside/outside region selection from database (using a variable for now)
-region_sel = "outside"
 
+print(roi)
 ## check if there is an alarm condition
 def check_alarm_condition(roi, object, region_sel):  
     overlap = check_overlap(roi, object)
