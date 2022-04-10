@@ -48,9 +48,10 @@ def convertToJson(data):
 uuid_str = str(uuid.uuid4())[:4]
 print(f"{uuid_str}: starting script at {datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}")
 
+#conect to database and store contents
 roi = dBConnect()
-print(roi)
 
+#the next series of functions parses the json string and converts it to ints
 def find_top(roi):
     data = ""
     for i in range(len(roi)):
@@ -110,10 +111,12 @@ convertToJson(region)
 # retrieve ROI coordinates and region
 with open('roi.json') as f:
     roi = json.load(f)
-    roi = roi['data'][0]
-
+    
     ## retrieve inside/outside region selection from database
-    region_sel = roi['timestamp']#CHANGE TO LOCATION
+    region_sel = roi['location']
+
+    #load data
+    roi = roi['data'][0]
 f.close()
 
 
