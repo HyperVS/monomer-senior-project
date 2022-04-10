@@ -1,1 +1,1 @@
-[{"id": 4, "timestamp": "inside", "data": "{top:280, left:300, width:180, height:220}"}]
+{"location": "inside", "data": [{"top": 280, "left": 300, "width": 180, "height": 220}]}

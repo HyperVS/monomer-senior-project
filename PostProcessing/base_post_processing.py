@@ -8,6 +8,7 @@ from datetime import datetime
 import uuid
 from twilio.rest import Client
 
+
 #connect to the postgres database
 def dBConnect():
     #connect to database
@@ -26,18 +27,18 @@ def dBConnect():
     roi = cursor.fetchall()
 
     #insert
-    insert = []
-    column = [column[0] for column in cursor.description]
+    #insert = []
+    #column = [column[0] for column in cursor.description]
 
-    for i in roi:
-        insert.append(dict(zip(column, i)))
+    #for i in roi:
+        #insert.append(dict(zip(column, i)))
     #commit changes
     connection.commit()
 
     #close connection
     connection.close()
 
-    return insert
+    return roi
 
 #convert data to json and save to file
 def convertToJson(data):
@@ -49,7 +50,62 @@ print(f"{uuid_str}: starting script at {datetime.now().strftime('%Y-%m-%d %H:%M:
 
 roi = dBConnect()
 print(roi)
-convertToJson(roi)
+
+def find_top(roi):
+    data = ""
+    for i in range(len(roi)):
+        if roi[i] == ':' and roi[i-1] == 'p':
+            i = i + 1
+            while roi[i] != ',':
+                data = data + roi[i]
+                i = i + 1
+    data = int(data)
+    return data
+
+def find_left(roi):
+    data = ""
+    for i in range(len(roi)):
+        if roi[i] == ':' and roi[i-2] == 'f':
+            i = i + 1
+            while roi[i] != ',':
+                data = data + roi[i]
+                i = i + 1
+    data = int(data)
+    return data    
+
+
+def find_width(roi):
+    data = ""
+    for i in range(len(roi)):
+        if roi[i] == ':' and roi[i-1] == 'h':
+            i = i + 1
+            while roi[i] != ',':
+                data = data + roi[i]
+                i = i + 1
+    data = int(data)
+    return data
+
+def find_height(roi):
+    data = ""
+    for i in range(len(roi)):
+        if roi[i] == ':' and roi[i-2] == 'h':
+            i = i + 1
+            while roi[i] != '}':
+                data = data + roi[i]
+                i = i + 1
+    data = int(data)
+    return data
+
+#struct to save data of roi
+region = {
+    "location": roi[0][1],
+    "data": [{"top": find_top(roi[0][2]),
+             "left": find_left(roi[0][2]),
+             "width": find_width(roi[0][2]),
+             "height": find_height(roi[0][2])}]
+    
+}
+convertToJson(region)
 
 # retrieve ROI coordinates and region
 with open('roi.json') as f:
