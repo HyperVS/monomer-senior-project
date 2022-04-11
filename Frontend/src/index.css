@@ -1,220 +1,91 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none!important;
+  color: #313131
+}
+
+.app-container {
+  display: flex;
+}
+
+.navbar-container {
+  width: 360px;
+  min-height: 100vh;
+  border-right: solid 1px #c4c4c4;
+}
+
+.button-container {
+  display: flex;
+  height: 60px;
+  width: 359px;
+  align-items: center;
+}
+
+.title-bar-container {
+  background-color: #323232;
+  height: 80px;
 }
 
 .title-bar {
-  background-color: #353433;
-  height: 65px;
-  position: sticky;
+  display: flex;
+  align-items: baseline;
 }
 
-.canopy-style {
-  color: #7fb96d;
-  font-size: 50px;
+.canopy-text {
+  color: #bfe497;
+  font-size: 48px;
+  font-weight: bolder;
+  margin-left: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ai-text {
+  color: #97b774;
+  font-size: 36px;
   font-weight: bold;
-  position: relative;
-  left: 50px;
-  bottom: 5px;
-}
-
-.AI-style {
-  color: #5f704e;
-  font-size: 35px;
-  font-weight: bold;
-  position: relative;
-  right: 470px;
-  top: 8px;
-}
-
-.left-sidebar {
-  font-size: 19px;
-  color:black !important;
-  position: relative;
-  right: 140px;
-  bottom: 567px;
-}
-
-.mid-sidebar {
-  position: relative;
-  left: 240px;
-}
-
-.right-sidebar {
-  position: relative;
-  bottom: 567px;
-  left: 50px;
-}
-
-.live-stream-btn {
-  background-color: #5f704e;
-  width: 220px;
-}
-
-.video-browser-btn {
-  background-color: #5f704e;
-  width: 220px;
-  position: relative;
-  left: 18px;
-}
-
-.image-annotation-btn {
-  background-color: #5f704e;
-  width: 220px;
-  position: relative;
-  left: 6px;
-}
-
-.model-output-btn {
-  background-color: #5f704e;
-  width: 220px;
-}
-
-.admin-btn {
-  background-color: #5f704e;
-  width: 220px;
-  position: relative;
-  left: 50px;
-}
-
-.video-style {
-  width: 30px;
-  position: relative;
-  right: 27px;
-}
-
-.video-browser-style {
-  width: 30px;
-  position: relative;
-  right: 18px;
-}
-
-.image-annotation-style {
-  width: 30px;
-  position: relative;
-  right: 6px;
-}
-
-.model_output_style {
-  width: 30px;
-  position: relative;
-  right: 20px;
-}
-
-.admin-style {
-  width: 30px;
-  position: relative;
-  right: 50px;
-}
-
-.left-bar {
-  position: relative;
-  /* right: 720px; */
-}
-
-.right-bar {
-  position: relative;
-  left: 300px;
-}
-
-.bar-container {
-  background-color: #5f704e;
-  width: 350px;
-  height: 700px;
-  font-weight: bold;
-}
-
-.data-sets-field {
-  background-color: azure;
-  width: 300px;
-  height: 100px;
-  position: relative;
-  top: 10px;
-  left: 25px;
-  border-radius: 2%;
-}
-
-.title-dataset_stats {
-  position: relative;
-  top: 18px;
-  left: 23px;
-  font-size: 20px;
-}
-
-.class-labels-field {
-  background-color: azure;
-  width: 300px;
-  position: relative;
-  top: 20px;
-  left: 25px;
-  border-radius: 2%;
-}
-
-.title-class_labels {
-  position: relative;
-  top: 25px;
-  left: 23px;
-  font-size: 20px;
-}
-
-.options-field {
-  background-color: azure;
-  width: 300px;
-  position: relative;
-  top: 20px;
-  left: 25px;
-  border-radius: 2%;
-}
-
-.title-options {
-  position: relative;
-  top: 25px;
-  left: 23px;
-  font-size: 20px;
-}
-
-.shortcuts-field {
-  background-color: azure;
-  width: 300px;
-  position: relative;
-  top: 20px;
-  left: 25px;
-  border-radius: 2%;
-}
-
-.title-shortcuts {
-  position: relative;
-  top: 25px;
-  left: 23px;
-  font-size: 20px;
-}
-
-.new_dataset_btn {
-  position: relative;
-  top: 23px;
-  text-transform: uppercase;
+  margin-left: 20px;
 }
 
 .player {
-  position: relative;
-  right: 147px;
-  top: 43px;
-  pointer-events: none;
+  position: absolute;
 }
 
 .canvas {
   position: absolute;
-  z-index: 10;
-  top: 43px;
-  right: 147px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
+.player-canvas {
+  position: relative;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.livestream-controls {
+  display: flex;
+}
+
+.roi-button {
+  margin-top: 45px;
+  margin-left: 35px;
+}
