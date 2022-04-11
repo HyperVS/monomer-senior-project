@@ -107,3 +107,6 @@ dist
 .DS_Store
 Frontend/.DS_Store
 Backend/.DS_Store
+
+# React optimized build
+build/
