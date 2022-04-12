@@ -21,7 +21,7 @@ def dBConnect():
     cursor = connection.cursor()
 
     #get data. Format: top:yy, left:xx, height:hh, width:ww, location:"insideOrOutside"
-    cursor.execute('SELECT * FROM "models" WHERE ID = 4')
+    cursor.execute('SELECT * FROM "models" ORDER BY id DESC LIMIT 1')
 
     #fetch data
     roi = cursor.fetchall()
