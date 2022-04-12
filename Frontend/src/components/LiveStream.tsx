@@ -64,13 +64,14 @@ export default function LiveStream(){
 
     const saveROI = useCallback( async () => {
         try {
+            const data = JSON.stringify({location, data:[{top: x, left: y, width: w, height: h}]})
             await axios.post("http://127.0.0.1:8000/create", {
                 location:location, data: `[{top: ${x}, left: ${y}, width: ${w}, height: ${h}}]`
             });
         } catch (error) {
             console.error(error);
         }
-    }, [])
+    }, [x,y,w,h])
 
     return (
         <div style={{cursor: canDraw ? "crosshair" : "default"}}>

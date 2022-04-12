@@ -37,7 +37,7 @@ def dBConnect():
 
     #close connection
     connection.close()
-
+    print(roi)
     return roi
 
 #convert data to json and save to file
@@ -99,7 +99,7 @@ def find_height(roi):
 
 #struct to save data of roi
 region = {
-    "location": roi[0][1],
+    "location": roi[0][3],
     "data": [{"top": find_top(roi[0][2]),
              "left": find_left(roi[0][2]),
              "width": find_width(roi[0][2]),
