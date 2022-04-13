@@ -37,7 +37,7 @@ export default function LiveStream(){
         setIsDrawing(true);
     }
 
-    const endDrawing = (e: MouseEvent) => {
+    const endDrawing = () => {
         if(isDrawing) setIsDrawing(false);
         setCanDraw(false);
     }
@@ -49,7 +49,7 @@ export default function LiveStream(){
         const offsetY = e.nativeEvent.offsetY;
         setW(offsetX-x);
         setH(offsetY-y);
-        if(offsetX < x || offsetY < y) return; 
+        if(offsetX <= x || offsetY <= y || w < 0 || h < 0) return clearCanvas(); 
         context.strokeRect(x, y, w, h);
         context.clearRect(x, y, w, h);
         context.clearRect(x-4, offsetY+2, offsetX, offsetY);
@@ -57,21 +57,20 @@ export default function LiveStream(){
     }
 
     const clearCanvas = () => {
-        const canvas = canvasRef.current!;
+        const canvas = canvasRef.current!
         const context = contextRef.current!;
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     const saveROI = useCallback( async () => {
         try {
-            const data = JSON.stringify({location, data:[{top: x, left: y, width: w, height: h}]})
             await axios.post("http://127.0.0.1:8000/create", {
-                location:location, data: `[{top: ${x}, left: ${y}, width: ${w}, height: ${h}}]`
+                location, data: `[{top: ${x}, left: ${y}, width: ${w}, height: ${h}}]`
             });
         } catch (error) {
             console.error(error);
         }
-    }, [x,y,w,h, location])
+    }, [x, y, w, h, location])
 
     return (
         <div style={{cursor: canDraw ? "crosshair" : "default"}}>
