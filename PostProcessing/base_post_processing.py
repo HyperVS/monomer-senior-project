@@ -172,6 +172,9 @@ def send_alert(alert_message):
     #except EOFError:
         #continue
     #data = json.loads(data)
+    #for x in range(len(data)):
+        #object = data[x]['data'][0]
+        #check_alarm_condition(roi, object, region_sel)
 
 ## parse data and run geometry for each object
 with open('data.json') as f:

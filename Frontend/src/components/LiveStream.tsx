@@ -109,7 +109,7 @@ export default function LiveStream(){
                         loop={true}
                         playing={true}
                         muted
-                        url={"https://www.youtube.com/watch?v=9SyVuPxkuxA"}
+                        url={"http://192.168.254.24/hls/playlist.m3u8"}
                     />
                 </div>
                 <div className="canvas">
