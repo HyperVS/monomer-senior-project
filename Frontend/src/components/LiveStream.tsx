@@ -71,7 +71,7 @@ export default function LiveStream(){
         } catch (error) {
             console.error(error);
         }
-    }, [x,y,w,h])
+    }, [x,y,w,h, location])
 
     return (
         <div style={{cursor: canDraw ? "crosshair" : "default"}}>

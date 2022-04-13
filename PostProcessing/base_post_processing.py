@@ -13,7 +13,7 @@ from twilio.rest import Client
 def dBConnect():
     #connect to database
     #password will change based on what password you chose to set up server and db
-    connection = psycopg2.connect("dbname=roi user=postgres password=Password host=127.0.0.1 port=5432")
+    connection = psycopg2.connect("dbname=roi user=postgres password=senior host=127.0.0.1 port=5432")
 
     connection.autocommit = True
 
@@ -99,7 +99,7 @@ def find_height(roi):
 
 #struct to save data of roi
 region = {
-    "location": roi[0][3],
+    "location": roi[0][1],
     "data": [{"top": find_top(roi[0][2]),
              "left": find_left(roi[0][2]),
              "width": find_width(roi[0][2]),
@@ -158,8 +158,8 @@ def send_alert(alert_message):
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-        to="+17273015814", 
-        from_="+19409783430",
+        to="+17273705915", 
+        from_="+14342859160",
         body=alert_message)
 
 
