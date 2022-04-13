@@ -26,6 +26,7 @@ func main() {
 		ExposeHeaders:    "",
 		MaxAge:           999999,
 	}))
+	app.Static("/", "../../Frontend/build")
 	handler(app)
 	log.Fatal(app.Listen(":8000"))
 }
