@@ -7,6 +7,7 @@ export default function LiveStream(){
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const contextRef = useRef<CanvasRenderingContext2D | null | undefined>(null);
     const [location, setLocation] = useState<string | null>(null);
+    const [detect, setDetect] = useState<string | null>(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [isCanvasEmpty, setCanvasEmpty] = useState(true);
     const [canDraw, setCanDraw] = useState(false);
@@ -65,12 +66,12 @@ export default function LiveStream(){
     const saveROI = useCallback( async () => {
         try {
             await axios.post("http://127.0.0.1:8000/create", {
-                location, data: `[{top: ${x}, left: ${y}, width: ${w}, height: ${h}}]`
+                location, data: `[{top: ${x}, left: ${y}, width: ${w}, height: ${h}}]`, detect
             });
         } catch (error) {
             console.error(error);
         }
-    }, [x, y, w, h, location])
+    }, [x, y, w, h, location, detect])
 
     return (
         <div style={{cursor: canDraw ? "crosshair" : "default"}}>
@@ -81,7 +82,15 @@ export default function LiveStream(){
                     sx={{width: 200, fontSize: 16}}
                     onChange={(_, value) => setLocation(value ? value.toLocaleLowerCase() : null)}
                     options={["Inside", "Outside"]}
-                    renderInput={(props) => <TextField {...props} label="Detect objects"/>}
+                    renderInput={(props) => <TextField {...props} label="Location"/>}
+                />
+                <Autocomplete
+                    style={{marginLeft: 40, marginTop: 38}}
+                    disablePortal
+                    sx={{width: 200, fontSize: 16}}
+                    onChange={(_, value) => setDetect(value ? value.toLocaleLowerCase().replace(" ", "_"): null)}
+                    options={["Hardhat", "No hardhat"]}
+                    renderInput={(props) => <TextField {...props} label="Detect"/>}
                 />
                 <div className="roi-button">
                     <Button 
@@ -92,7 +101,7 @@ export default function LiveStream(){
                     </Button>
                     <Button 
                         onClick={() => saveROI()}
-                        disabled={isCanvasEmpty || location === null}
+                        disabled={isCanvasEmpty || location === null || detect === null}
                         variant="contained"
                         size="large"
                         style={{marginLeft: 25}}
