@@ -66,7 +66,7 @@ export default function LiveStream(){
     const saveROI = useCallback( async () => {
         try {
             await axios.post("http://127.0.0.1:8000/create", {
-                location, data: `[{top: ${x}, left: ${y}, width: ${w}, height: ${h}}]`, detect
+                location, data: `[{top: ${y}, left: ${x}, width: ${w}, height: ${h}}]`, detect
             });
         } catch (error) {
             console.error(error);
