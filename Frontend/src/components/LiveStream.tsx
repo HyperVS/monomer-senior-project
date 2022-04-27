@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef, MouseEvent, useCallback } from "react";
 import { Autocomplete, TextField, Button } from "@mui/material";
-// import ReactPlayer from 'react-player';
-import ReactPlayer from 'react-hls-player';
+import ReactPlayer from 'react-player';
 import axios from "axios";
 
 export default function LiveStream(){
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const contextRef = useRef<CanvasRenderingContext2D | null | undefined>(null);
-    const playerRef = useRef(null);
     const [location, setLocation] = useState<string | null>(null);
     const [detect, setDetect] = useState<string | null>(null);
     const [isDrawing, setIsDrawing] = useState(false);
@@ -114,13 +112,12 @@ export default function LiveStream(){
             <div className="player-canvas">
                 <div className="player">
                     <ReactPlayer
-                        playerRef={playerRef}
                         width={'960px'}
                         height={'540px'}
                         loop={true}
                         autoPlay={true}
                         muted
-                        src={"http://127.0.0.1/hls/playlist.m3u8"}
+                        url={"http://96.58.110.215/hls/playlist.m3u8"}
                     />
                 </div>
                 <div className="canvas">
