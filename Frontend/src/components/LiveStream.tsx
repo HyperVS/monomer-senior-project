@@ -11,10 +11,13 @@ export default function LiveStream(){
     const [isDrawing, setIsDrawing] = useState(false);
     const [isCanvasEmpty, setCanvasEmpty] = useState(true);
     const [canDraw, setCanDraw] = useState(false);
+    const [url, setUrl] = useState("");
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
     const [w, setW] = useState(0);
     const [h, setH] = useState(0);
+
+    const cameraStreamUrl = "http://192.168.1.94/hls/playlist.m3u8"
 
     useEffect(() => {
         const canvas = canvasRef.current!;
@@ -29,6 +32,16 @@ export default function LiveStream(){
         const pixelBuffer = new Uint32Array(context.getImageData(0, 0, canvas.width, canvas.height).data.buffer);
         setCanvasEmpty(!pixelBuffer.some(color => color !== 0));
     }, [canDraw, isCanvasEmpty])
+
+    
+    useEffect(() => {
+        fetch(cameraStreamUrl)
+        .then(response => response.blob())
+            .then(blob => {
+            setUrl(URL.createObjectURL(blob))
+            
+        });
+    }, [])
 
     const startDrawing = (e: MouseEvent) => {
         if(!canDraw) return;
@@ -117,7 +130,7 @@ export default function LiveStream(){
                         loop={true}
                         autoPlay={true}
                         muted
-                        url={"http://96.58.110.215/hls/playlist.m3u8"}
+                        url={url}
                     />
                 </div>
                 <div className="canvas">
