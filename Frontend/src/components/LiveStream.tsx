@@ -114,10 +114,10 @@ export default function LiveStream(){
             <div className="player-canvas">
                 <div className="player">
                     <ReactPlayer
-                        width={'960px'}
-                        height={'540px'}
-                        loop={true}
+                        width={'auto'}
+                        height={'100%'}
                         autoPlay={true}
+                        playing
                         muted
                         url={cameraStreamUrl}
                     />
@@ -126,8 +126,8 @@ export default function LiveStream(){
                     <canvas 
                         ref={canvasRef} 
                         className='canvas'
-                        width={'960px'} 
-                        height={'540px'}
+                        width={"720px"} 
+                        height={"480px"}
                         onMouseDown={startDrawing}
                         onMouseMove={draw}
                         onMouseUp={endDrawing}
