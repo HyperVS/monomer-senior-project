@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, MouseEvent, useCallback } from "react";
-import { Autocomplete, TextField, Button } from "@mui/material";
+import { Autocomplete, TextField, Button, Collapse, Alert, Box, IconButton } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 import ReactPlayer from 'react-player';
 import axios from "axios";
 
@@ -11,12 +12,15 @@ export default function LiveStream(){
     const [isDrawing, setIsDrawing] = useState(false);
     const [isCanvasEmpty, setCanvasEmpty] = useState(true);
     const [canDraw, setCanDraw] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const [mode, setMode] = useState<"error" | "success">("success");
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
     const [w, setW] = useState(0);
     const [h, setH] = useState(0);
 
-    const cameraStreamUrl = "http://192.168.1.94/hls/playlist.m3u8"
+    const cameraStreamUrl = "http://10.119.81.70/hls/playlist.m3u8"
 
     useEffect(() => {
         const canvas = canvasRef.current!;
@@ -67,16 +71,46 @@ export default function LiveStream(){
 
     const saveROI = useCallback( async () => {
         try {
-            await axios.post("http://127.0.0.1:8000/create", {
+            await axios.post("http://10.119.81.70:8000/create", {
                 location, data: `[{top: ${y}, left: ${x}, width: ${w}, height: ${h}}]`, detect
             });
+            setMode("success");
+            setMessage("Successfully saved ROI");
+            setOpen(true);
         } catch (error) {
             console.error(error);
+            setMode("error");
+            setMessage("Error saving ROI");
+            setOpen(true);
         }
     }, [x, y, w, h, location, detect])
 
+    const CustomAlert = () => (
+        <Box sx={{ width: '100%' }}>
+            <Collapse in={open}>
+                <Alert
+                    action={
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            size="medium"
+                            onClick={() => setOpen(false)}>
+                            <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                    }
+                    severity={mode}
+                    style={{fontSize: 14}}
+                    sx={{ mb: 2 }}>
+                    {message}
+                </Alert>
+            </Collapse>
+        </Box>
+    );
+    
+
     return (
-        <div style={{cursor: canDraw ? "crosshair" : "default"}}>
+        <div style={{cursor: canDraw ? "crosshair" : "default", width: "100%"}}>
+            <CustomAlert/>
             <div className="livestream-controls">
                 <Autocomplete
                     style={{marginLeft: 40, marginTop: 38}}
