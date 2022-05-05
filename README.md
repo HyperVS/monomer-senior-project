@@ -8,6 +8,10 @@ First, cd into the Frontend directory, install dependencies and build:
     
     cd Frontend && npm install && npm run build
 
+Create a .env file under Frontend directory and add an IP address for the host. Example format:
+
+    HOST=10.119.81.70
+
 Then cd into the Backend directory
 
     cd .. && cd Backend/roi

@@ -3,6 +3,9 @@ import { Autocomplete, TextField, Button, Collapse, Alert, Box, IconButton } fro
 import CloseIcon from '@mui/icons-material/Close';
 import ReactPlayer from 'react-player';
 import axios from "axios";
+import "dotenv/config";
+
+const host = process.env.HOST;
 
 export default function LiveStream(){
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,7 +23,7 @@ export default function LiveStream(){
     const [w, setW] = useState(0);
     const [h, setH] = useState(0);
 
-    const cameraStreamUrl = "http://10.119.81.70/hls/playlist.m3u8"
+    const cameraStreamUrl = `http://${host}/hls/playlist.m3u8`
 
     useEffect(() => {
         const canvas = canvasRef.current!;
@@ -71,7 +74,7 @@ export default function LiveStream(){
 
     const saveROI = useCallback( async () => {
         try {
-            await axios.post("http://10.119.81.70:8000/create", {
+            await axios.post(`http://${host}:8000/create`, {
                 location, data: `[{top: ${y}, left: ${x}, width: ${w}, height: ${h}}]`, detect
             });
             setMode("success");
